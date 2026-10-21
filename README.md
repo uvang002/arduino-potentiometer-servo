@@ -108,8 +108,6 @@ Servo arm position
 
 The potentiometer's outer pins may be connected to `5V` and `GND` in either order. Reversing them changes the direction in which the servo moves.
 
-> **Power warning:** A small servo may work from the Arduino `5V` pin, but larger servos should use a separate regulated 5V power supply. Connect the external power-supply ground to the Arduino `GND`.
-
 ### Upload the Program
 
 1. Open `potentiometer_servo.ino` in the Arduino IDE.
@@ -156,4 +154,3 @@ The Arduino sketch used by this project is available here:
 - A small servo may use the Arduino `5V` pin, but larger servos should use a separate regulated 5V power supply.
 - When using an external servo power supply, connect its ground to the Arduino `GND`.
 - The potentiometer and servo may produce small fluctuations due to electrical noise.
-- Do not force the servo past its physical movement range.
