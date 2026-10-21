@@ -133,3 +133,13 @@ ADC: 1023 | Position: 180
 ```
 
 The program reads the potentiometer as a 10-bit ADC value from `0` to `1023`, maps it to an angle from `0°` to `180°`, and sends the resulting position to the servo through the `Servo.h` library.
+
+## 5. Wokwi Simulation
+
+Try the circuit online in the Wokwi simulator:
+
+[Open the Arduino Uno potentiometer servo simulation](https://wokwi.com/projects/477239913595995137)
+
+The Arduino sketch used by this project is available here:
+
+[View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-servo-potentiometer/blob/main/potentiometer_servo.ino)
