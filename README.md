@@ -1,4 +1,4 @@
-# Arduino Uno R3 Overview & Servo Control
+# Arduino Uno R3 Potentiometer Servo Control
 
 This project provides an overview of the Arduino Uno R3 (powered by the ATmega328P microcontroller) and demonstrates how to control a servo motor using a potentiometer. For complete technical specifications, refer to the [ATmega328P datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-Data-Sheet-DS40002061B.pdf).
 
@@ -143,3 +143,13 @@ Try the circuit online in the Wokwi simulator:
 The Arduino sketch used by this project is available here:
 
 [View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-servo-potentiometer/blob/main/potentiometer_servo.ino)
+
+## Limitations
+
+- This project is designed for an Arduino Uno R3 using the ATmega328P.
+- The servo angle range may vary depending on the servo model.
+- `Servo.h` is used for servo positioning instead of `analogWrite()`.
+- A small servo may use the Arduino `5V` pin, but larger servos should use a separate regulated 5V power supply.
+- When using an external servo power supply, connect its ground to the Arduino `GND`.
+- The potentiometer and servo may produce small fluctuations due to electrical noise.
+- Do not force the servo past its physical movement range.
