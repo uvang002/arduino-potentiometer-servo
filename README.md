@@ -80,3 +80,56 @@ Servo pulse width
         ↓
 Servo arm position
 ```
+
+## 4. How to Use
+
+### Required Components
+
+- Arduino Uno R3
+- Standard hobby servo motor
+- 10 kΩ potentiometer
+- Breadboard and jumper wires
+- USB cable
+
+### Wiring
+
+| Component | Arduino connection |
+|---|---|
+| Potentiometer left pin | `5V` |
+| Potentiometer middle pin | `A0` |
+| Potentiometer right pin | `GND` |
+| Servo signal wire | Digital pin `D9` |
+| Servo power wire | `5V` |
+| Servo ground wire | `GND` |
+
+The potentiometer's outer pins may be connected to `5V` and `GND` in either order. Reversing them changes the direction in which the servo moves.
+
+> **Power warning:** A small servo may work from the Arduino `5V` pin, but larger servos should use a separate regulated 5V power supply. Connect the external power-supply ground to the Arduino `GND`.
+
+### Upload the Program
+
+1. Open `potentiometer_servo.ino` in the Arduino IDE.
+2. Connect the Arduino Uno R3 to your computer with a USB cable.
+3. Select **Tools → Board → Arduino Uno**.
+4. Select the correct port under **Tools → Port**.
+5. Verify that the Servo library is available. It is included with the Arduino IDE.
+6. Click **Upload**.
+7. Turn the potentiometer after the upload completes. The servo arm should move between approximately `0°` and `180°`.
+
+### Monitor ADC and Servo Values
+
+To view the potentiometer reading and calculated servo angle:
+
+1. Open **Tools → Serial Monitor**.
+2. Set the baud rate to **9600 baud**.
+3. Turn the potentiometer and observe the output.
+
+Example output:
+
+```text
+ADC: 0 | Position: 0
+ADC: 512 | Position: 90
+ADC: 1023 | Position: 180
+```
+
+The program reads the potentiometer as a 10-bit ADC value from `0` to `1023`, maps it to an angle from `0°` to `180°`, and sends the resulting position to the servo through the `Servo.h` library.
