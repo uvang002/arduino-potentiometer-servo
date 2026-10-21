@@ -2,6 +2,10 @@
 
 This project provides an overview of the Arduino Uno R3 (powered by the ATmega328P microcontroller) and demonstrates how to control a servo motor using a potentiometer. For complete technical specifications, refer to the [ATmega328P datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-Data-Sheet-DS40002061B.pdf).
 
+## Digital Logic Connection
+
+This project applies digital logic and basic embedded-systems concepts to a physical control system. The potentiometer produces an analog voltage, which the ADC converts into a 10-bit digital value. The program maps this digital value to a servo angle, and the `Servo.h` library generates the corresponding pulse-width signal that controls the servo arm's position.
+
 ## 1. ATmega328P Architecture and Features
 
 ### Core and Memory
