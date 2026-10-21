@@ -1,6 +1,6 @@
-# ATmega328P Overview & Servo Control
+# Arduino Uno R3 Overview & Servo Control
 
-This project provides an overview of the ATmega328P microcontroller and demonstrates how to control a servo motor using a potentiometer. For complete technical specifications, refer to the [ATmega328P datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-Data-Sheet-DS40002061B.pdf).
+This project provides an overview of the Arduino Uno R3 (powered by the ATmega328P microcontroller) and demonstrates how to control a servo motor using a potentiometer. For complete technical specifications, refer to the [ATmega328P datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-Data-Sheet-DS40002061B.pdf).
 
 ## 1. ATmega328P Architecture and Features
 
