@@ -1,6 +1,6 @@
-# Arduino Uno R3 Overview & Servo Control
+# Arduino Uno R3 Overview & PWM Output
 
-This project provides an overview of the Arduino Uno R3 (powered by the ATmega328P microcontroller) and demonstrates how to control a servo motor using a potentiometer. For complete technical specifications, refer to the [ATmega328P datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-Data-Sheet-DS40002061B.pdf).
+This project provides an overview of the Arduino Uno R3 (powered by the ATmega328P microcontroller) and demonstrates ordinary analog-output PWM control from a potentiometer. For complete technical specifications, refer to the [ATmega328P datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-Data-Sheet-DS40002061B.pdf).
 
 ## 1. ATmega328P Architecture and Features
 
@@ -35,37 +35,39 @@ Pulse-width modulation (PWM) is a digital technique that rapidly switches a sign
 - **Pulse width:** The amount of time a signal remains HIGH.
 - **Duty cycle:** The ratio of the HIGH pulse duration to the total signal period.
 
-## 3. Potentiometer Servo Control
+## 3. Potentiometer-Controlled PWM Output (`analogWrite`)
 
 ### Hardware Connections
 
 | Component | Arduino connection |
 |---|---|
 | Potentiometer wiper | Analog pin `A0` |
-| Servo control signal | Digital pin `D9` |
+| PWM output signal | Digital pin `D9` (PWM-capable) |
 | Potentiometer power | `5V` |
 | Potentiometer ground | `GND` |
-| Servo power and ground | `5V` and `GND` |
 
 ### Signal Chain
 
 1. The potentiometer produces a variable analog voltage.
 2. The Arduino's analog-to-digital converter (ADC) converts the voltage into a 10-bit digital value from `0` to `1023`.
-3. The digital value is mapped to a target servo angle from `0°` to `180°`.
-4. The `Servo.h` library converts the angle into a corresponding pulse width.
-5. The pulse is sent to the servo through digital pin `D9`.
+3. The ADC value is mapped to an 8-bit PWM duty value from `0` to `255`.
+4. `analogWrite()` outputs that duty value on digital pin `D9` as ordinary PWM.
 
-### Servo Timing
+### PWM Timing on `D9`
 
-The servo control signal is typically repeated every 20 ms, which corresponds to approximately 50 Hz. The servo primarily uses the duration of the HIGH pulse to determine its position:
+On the Arduino Uno, `analogWrite()` on `D9` uses a PWM carrier frequency of approximately `490 Hz`. The duty value sets how long each cycle remains HIGH:
 
-| Pulse width | Approximate servo position |
+| PWM value | Approximate duty cycle |
 |---:|---:|
-| `1000 µs` | `0°` |
-| `1500 µs` | `90°` |
-| `2000 µs` | `180°` |
+| `0` | `0%` |
+| `128` | `50%` |
+| `255` | `100%` |
 
-The exact pulse-width range may vary depending on the servo model.
+### Ordinary PWM vs. Servo Control Pulses
+
+`analogWrite()` is ordinary PWM and does **not** directly command a hobby servo position. A servo expects a repeated control pulse (typically around 50 Hz) where the HIGH-time width encodes the target angle (for example, about `1000 µs` to `2000 µs`).
+
+In this repository, pin `D9` is used as a general PWM output pin, not as a servo-control pulse output.
 
 ### Control Relationship
 
@@ -74,9 +76,9 @@ Potentiometer position
         ↓
 ADC value from 0 to 1023
         ↓
-Mapped servo angle from 0° to 180°
+Mapped PWM duty from 0 to 255
         ↓
-Servo pulse width
+PWM output on D9 (~490 Hz)
         ↓
-Servo arm position
+Average output level
 ```
