@@ -146,6 +146,15 @@ The Arduino sketch used by this project is available here:
 
 [View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-servo-potentiometer/blob/main/potentiometer_servo.ino)
 
+## Schematic Diagram
+
+The circuit schematic was created in KiCad.
+
+The editable KiCad project and schematic are available here:
+
+- [`Arduino circuit wire.kicad_pro`](Arduino%20circuit%20wire.kicad_pro)
+- [`Arduino circuit wire.kicad_sch`](Arduino%20circuit%20wire.kicad_sch)
+
 ## Limitations
 
 - This project is designed for an Arduino Uno R3 using the ATmega328P.
