@@ -152,8 +152,8 @@ The circuit schematic was created in KiCad.
 
 The editable KiCad project and schematic are available here:
 
-- [`Arduino circuit wire.kicad_pro`](Arduino%20circuit%20wire.kicad_pro)
-- [`Arduino circuit wire.kicad_sch`](Arduino%20circuit%20wire.kicad_sch)
+- [`Arduino circuit wire.kicad_pro`](hardware/Arduino%20circuit%20wire.kicad_pro)
+- [`Arduino circuit wire.kicad_sch`](hardware/Arduino%20circuit%20wire.kicad_sch)
 
 ## Limitations
 
