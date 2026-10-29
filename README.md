@@ -71,6 +71,27 @@ The servo control signal is typically repeated every 20 ms, which corresponds to
 
 The exact pulse-width range may vary depending on the servo model.
 
+### Testing Servo PWM with a Logic Analyzer
+
+A logic analyzer can be used to observe the PWM signal sent to the servo.
+
+1. Connect logic analyzer channel `CH0` to Arduino digital pin `D9`.
+2. Connect the logic analyzer ground to Arduino `GND`.
+3. Set the sample rate to **100 kHz**.
+4. Set the capture duration to **1 second**, resulting in **100,000 samples**.
+5. Start the recording.
+6. Turn the potentiometer and observe the PWM signal on `CH0`.
+
+The signal should repeat approximately every 20 ms, or 50 Hz. The pulse width should change as the potentiometer is rotated:
+
+| Pulse width | Approximate servo position |
+|---:|---:|
+| `1000 µs` | `0°` |
+| `1500 µs` | `90°` |
+| `2000 µs` | `180°` |
+
+The exact pulse-width range may vary depending on the servo model and the `Servo.h` library configuration.
+
 ### Control Relationship
 
 ```text
@@ -136,6 +157,19 @@ ADC: 1023 | Position: 180
 
 The program reads the potentiometer as a 10-bit ADC value from `0` to `1023`, maps it to an angle from `0°` to `180°`, and sends the resulting position to the servo through the `Servo.h` library.
 
+### Testing Potentiometer Output Voltage
+
+Tools needed:
+
+- Digital multimeter
+- Two jumper wires
+
+1. Power the Arduino.
+2. Connect one jumper wire to GND and another to the potentiometer’s middle pin (wiper).
+3. Set the multimeter to DC voltage.
+4. Connect the black probe to the GND wire and the red probe to the wiper wire.
+5. Turn the potentiometer knob. The measured voltage should vary from approximately 0 V to 5 V.
+
 ## 5. Wokwi Simulation
 
 Try the circuit online in the Wokwi simulator:
@@ -146,14 +180,6 @@ The Arduino sketch used by this project is available here:
 
 [View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-servo-potentiometer/blob/main/potentiometer_servo.ino)
 
-## Schematic Diagram
-
-The circuit schematic was created in KiCad.
-
-The editable KiCad project and schematic are available here:
-
-- [`Arduino circuit wire.kicad_pro`](hardware/Arduino%20circuit%20wire.kicad_pro)
-- [`Arduino circuit wire.kicad_sch`](hardware/Arduino%20circuit%20wire.kicad_sch)
 
 ## Limitations
 
