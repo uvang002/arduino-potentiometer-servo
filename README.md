@@ -39,53 +39,7 @@ Unlike ordinary PWM, a hobby servo uses the duration of each HIGH pulse to deter
 - **Pulse width:** The amount of time a signal remains HIGH.
 - **Repeat period:** The time between successive position pulses.
 
-## 3. Potentiometer Servo Control
-
-### Hardware Connections
-
-| Component | Arduino connection |
-|---|---|
-| Potentiometer wiper | Analog pin `A0` |
-| Servo control signal | Digital pin `D9` |
-| Potentiometer power | `5V` |
-| Potentiometer ground | `GND` |
-| Servo power and ground | `5V` and `GND` |
-
-### Signal Chain
-
-1. The potentiometer produces a variable analog voltage.
-2. With the default `AVcc` reference, the Arduino's analog-to-digital converter (ADC) converts the voltage into a 10-bit digital value from `0` to `1023`.
-3. The digital value is mapped to a target servo angle from `0°` to `180°`.
-4. The `Servo.h` library generates a timed control pulse corresponding to the angle.
-5. The pulse is sent to the servo through digital pin `D9`.
-
-### Servo Timing
-
-The servo control signal is typically repeated about every 20 ms, which corresponds to approximately 50 Hz. The servo primarily uses the duration of the HIGH pulse to determine its position. The table below shows common nominal values:
-
-| Pulse width | Approximate servo position |
-|---:|---:|
-| `544 µs` | `0°` |
-| `1500 µs` | `90°` |
-| `2400 µs` | `180°` |
-
-In this sketch, `Servo.write()` uses the Arduino Servo library's default angle-to-pulse mapping (approximately `544–2400 µs`) unless a custom range is supplied. Individual servos may require a narrower or different range, so these values are not guaranteed limits.
-
-### Control Relationship
-
-```text
-Potentiometer position
-        ↓
-ADC value from 0 to 1023
-        ↓
-Mapped servo angle from 0° to 180°
-        ↓
-Servo pulse width
-        ↓
-Servo arm position
-```
-
-## 4. How to Use
+## 3. Circuit Wiring
 
 ### Required Components
 
@@ -95,7 +49,7 @@ Servo arm position
 - Breadboard and jumper wires
 - USB cable
 
-### Wiring
+### Hardware Connections
 
 | Component | Arduino connection |
 |---|---|
@@ -134,9 +88,33 @@ Position: 90
 Position: 180
 ```
 
-The program reads the potentiometer as a 10-bit ADC value from `0` to `1023`, maps it to an angle from `0°` to `180°`, and sends the resulting position to the servo through the `Servo.h` library.
+### Servo Timing
 
-## Test the circuit
+The servo control signal is typically repeated about every 20 ms, which corresponds to approximately 50 Hz. The servo primarily uses the duration of the HIGH pulse to determine its position. The table below shows common nominal values:
+
+| Pulse width | Approximate servo position |
+|---:|---:|
+| `544 µs` | `0°` |
+| `1500 µs` | `90°` |
+| `2400 µs` | `180°` |
+
+In this sketch, `Servo.write()` uses the Arduino Servo library's default angle-to-pulse mapping (approximately `544–2400 µs`) unless a custom range is supplied. Individual servos may require a narrower or different range, so these values are not guaranteed limits.
+
+### Signal Chain
+
+```text
+Potentiometer position
+        ↓
+ADC value from 0 to 1023
+        ↓
+Mapped servo angle from 0° to 180°
+        ↓
+Servo pulse width
+        ↓
+Servo arm position
+```
+
+## 5. Test the Circuit
 
 ### Measure the potentiometer voltage
 
@@ -160,7 +138,7 @@ A logic analyzer can show the control pulses on pin `D9`:
 
 The signal is typically repeated about every 20 ms, or 50 Hz, while the HIGH-pulse duration changes with the requested angle.
 
-## 5. Wokwi Simulation
+## 6. Wokwi Simulation
 
 Try the circuit online in the Wokwi simulator:
 
