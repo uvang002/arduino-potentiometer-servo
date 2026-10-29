@@ -136,34 +136,29 @@ Position: 180
 
 The program reads the potentiometer as a 10-bit ADC value from `0` to `1023`, maps it to an angle from `0°` to `180°`, and sends the resulting position to the servo through the `Servo.h` library.
 
-### Testing Potentiometer Output Voltage 
+## Test the circuit
 
-A digital multimeter can be use to observe the voltage output from the potentiometer. 
+### Measure the potentiometer voltage
 
-### Tools needed: 
--Digital multimeter 
+A digital multimeter can verify the potentiometer output:
 
-1. Two jumper wires 
-2. Power the Arduino. 
-3. Connect one jumper wire to GND and another to the potentiometer’s middle pin (wiper). 
-4. Set the multimeter to DC voltage. 
-5. Connect the black probe to the GND wire and the red probe to the wiper wire. 
-6. Turn the potentiometer knob. The measured voltage should vary from approximately 0 V to 5 V.
+1. Power the Arduino.
+2. Connect the multimeter black probe to `GND`.
+3. Connect the red probe to the potentiometer wiper or `A0`.
+4. Set the meter to DC voltage.
+5. Turn the potentiometer and confirm that the voltage changes from approximately 0 V to 5 V.
 
-### Testing Servo PWM with a Logic Analyzer 
+### Observe the servo signal
 
-A logic analyzer can be used to observe the PWM signal sent to the servo. 
+A logic analyzer can show the control pulses on pin `D9`:
 
-### Tools needed: 
+1. Connect channel `CH0` to Arduino pin `D9`.
+2. Connect the analyzer ground to Arduino `GND`.
+3. Set the sample rate to `100 kHz`.
+4. Capture approximately one second of data.
+5. Turn the potentiometer and observe the pulse width change.
 
-- Logic Analyzer 
-
-1. Connect logic analyzer channel CH0 to Arduino digital pin D9. 
-2. Connect the logic analyzer ground to Arduino GND. 
-3. Set the sample rate to 100 kHz. 
-4. Set the capture duration to 1 second, resulting in 100,000 samples. 
-5. Start the recording. 
-6. Turn the potentiometer and observe the PWM signal on CH0. 
+The signal is typically repeated about every 20 ms, or 50 Hz, while the HIGH-pulse duration changes with the requested angle.
 
 ## 5. Wokwi Simulation
 
@@ -175,14 +170,6 @@ The Arduino sketch used by this project is available here:
 
 [View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-servo-potentiometer/blob/main/potentiometer_servo.ino)
 
-## Schematic Diagram
-
-The circuit schematic was created in KiCad.
-
-The editable KiCad project and schematic are available here:
-
-- [`Arduino circuit wire.kicad_pro`](hardware/Arduino%20circuit%20wire.kicad_pro)
-- [`Arduino circuit wire.kicad_sch`](hardware/Arduino%20circuit%20wire.kicad_sch)
 
 ## Limitations
 
