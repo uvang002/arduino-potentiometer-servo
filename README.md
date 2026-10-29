@@ -65,9 +65,9 @@ The servo control signal is typically repeated about every 20 ms, which correspo
 
 | Pulse width | Approximate servo position |
 |---:|---:|
-| `500 µs` | `0°` |
+| `544 µs` | `0°` |
 | `1500 µs` | `90°` |
-| `2000 µs` | `180°` |
+| `2400 µs` | `180°` |
 
 In this sketch, `Servo.write()` uses the Arduino Servo library's default angle-to-pulse mapping (approximately `544–2400 µs`) unless a custom range is supplied. Individual servos may require a narrower or different range, so these values are not guaranteed limits.
 
