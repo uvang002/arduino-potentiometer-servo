@@ -114,7 +114,7 @@ Servo pulse width
 Servo arm position
 ```
 
-## 5. Test the Circuit
+## 4. Test the Circuit
 
 ### Measure the potentiometer voltage
 
@@ -133,12 +133,12 @@ A logic analyzer can show the control pulses on pin `D9`:
 1. Connect channel `CH0` to Arduino pin `D9`.
 2. Connect the analyzer ground to Arduino `GND`.
 3. Set the sample rate to `100 kHz`.
-4. Capture approximately one second of data.
+4. Set the capture duration to exactly **1 second**, resulting in **100,000 samples**.
 5. Turn the potentiometer and observe the pulse width change.
 
 The signal is typically repeated about every 20 ms, or 50 Hz, while the HIGH-pulse duration changes with the requested angle.
 
-## 6. Wokwi Simulation
+## 5. Wokwi Simulation
 
 Try the circuit online in the Wokwi simulator:
 
@@ -146,7 +146,7 @@ Try the circuit online in the Wokwi simulator:
 
 The Arduino sketch used by this project is available here:
 
-[View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-servo-potentiometer/blob/main/potentiometer_servo.ino)
+[View `potentiometer_servo.ino`](https://github.com/uvang002/arduino-potentiometer-servo/blob/main/potentiometer_servo.ino)
 
 
 ## Limitations
