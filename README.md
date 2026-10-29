@@ -118,7 +118,7 @@ The potentiometer's outer pins may be connected to `5V` and `GND` in either orde
 6. Click **Upload**.
 7. Turn the potentiometer after the upload completes. The servo arm should move between approximately `0°` and `180°`.
 
-### Monitor ADC and Servo Values
+### Monitor Servo Angle
 
 To view the potentiometer reading and calculated servo angle:
 
