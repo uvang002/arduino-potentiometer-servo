@@ -69,7 +69,7 @@ The servo control signal is typically repeated every 20 ms, which corresponds to
 | `1500 µs` | `90°` |
 | `2000 µs` | `180°` |
 
-The exact pulse-width range may vary depending on the servo model.
+The exact pulse-width range may vary depending on the servo model and the `Servo.h` library configuration.
 
 ### Testing Servo PWM with a Logic Analyzer
 
@@ -81,16 +81,6 @@ A logic analyzer can be used to observe the PWM signal sent to the servo.
 4. Set the capture duration to **1 second**, resulting in **100,000 samples**.
 5. Start the recording.
 6. Turn the potentiometer and observe the PWM signal on `CH0`.
-
-The signal should repeat approximately every 20 ms, or 50 Hz. The pulse width should change as the potentiometer is rotated:
-
-| Pulse width | Approximate servo position |
-|---:|---:|
-| `1000 µs` | `0°` |
-| `1500 µs` | `90°` |
-| `2000 µs` | `180°` |
-
-The exact pulse-width range may vary depending on the servo model and the `Servo.h` library configuration.
 
 ### Control Relationship
 
