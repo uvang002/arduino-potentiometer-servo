@@ -24,9 +24,7 @@ void loop() {
 
   myservo.write(servoPosition);
 
-  Serial.print("ADC: ");
-  Serial.print(potValue);
-  Serial.print(" | Position: ");
+  Serial.print("Position: ");
   Serial.println(servoPosition);
 
   delay(15);
